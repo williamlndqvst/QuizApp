@@ -111,7 +111,10 @@ class CategoryQuestionActivity : AppCompatActivity() {
             var hQ5answers: Array<String> = arrayOf("Yuri Gagarin", "Alan Shepard", "Neil Armstrong", "Gherman Titov")
             val hQ5 = Question("Vem var den första människan i rymden?", hQ5answers, "Yuri Gagarin")
 
-            var historyQuestions: Array<Question> = arrayOf(hQ1, hQ2, hQ3, hQ4, gQ5)
+            var hQ6answers: Array<String> = arrayOf("1922", "1920", "1925", "1927")
+            val hQ6 = Question("Vilket år skedde det första Vasaloppet?", hQ6answers, "1922")
+
+            var historyQuestions: Array<Question> = arrayOf(hQ1, hQ2, hQ3, hQ4, hQ5, hQ6)
             val historyCategory: Category = Category();
             historyCategory.name = "History"
             historyCategory.questions = historyQuestions;
