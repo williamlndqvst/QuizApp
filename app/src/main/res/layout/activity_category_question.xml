@@ -20,34 +20,60 @@
         app:layout_constraintVertical_bias="0.103" />
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
-        tools:layout_editor_absoluteX="82dp"
-        tools:layout_editor_absoluteY="301dp" />
+        android:id="@+id/geographyButton"
+        android:layout_width="179dp"
+        android:layout_height="118dp"
+        android:text="Geografi"
+        app:iconTint="@color/teal_200"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.068"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.598"
+        android:backgroundTint="#32612D"
+        />
 
     <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
-        tools:layout_editor_absoluteX="267dp"
-        tools:layout_editor_absoluteY="301dp" />
+        android:id="@+id/sportButton"
+        android:layout_width="179dp"
+        android:layout_height="118dp"
+        android:text="Sport"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.068"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.833"
+        android:backgroundTint="#FC6A03"
+        />
 
     <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
-        tools:layout_editor_absoluteX="72dp"
-        tools:layout_editor_absoluteY="536dp" />
+        android:id="@+id/technologyButton"
+        android:layout_width="179dp"
+        android:layout_height="118dp"
+        android:text="Teknologi"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.931"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.833"
+        android:backgroundTint="#1520A6"
+        />
 
     <Button
-        android:id="@+id/button4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
-        tools:layout_editor_absoluteX="252dp"
-        tools:layout_editor_absoluteY="511dp" />
+        android:id="@+id/historyButton"
+        android:layout_width="179dp"
+        android:layout_height="118dp"
+        android:text="Historia"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.931"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.598"
+        android:backgroundTint="#B90E0A"
+        />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

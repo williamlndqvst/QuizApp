@@ -4,7 +4,13 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/layout/activity_category_question.xml" value="0.29992142451409787" />
+        <entry key="app/src/main/res/layout/activity_geography_question.xml" value="0.3335365521559069" />
+        <entry key="app/src/main/res/layout/activity_history_question.xml" value="0.26132246376811596" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_questions.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_restart_screen.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_sport_question.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_technology_question.xml" value="0.33" />
       </map>
     </option>
   </component>

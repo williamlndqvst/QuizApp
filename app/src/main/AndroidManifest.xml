@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.QuizApp">
         <activity
+            android:name=".QuestionsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".RestartScreenActivity"
+            android:exported="true" />
+        <activity
             android:name=".CategoryQuestionActivity"
             android:exported="true" />
         <activity
