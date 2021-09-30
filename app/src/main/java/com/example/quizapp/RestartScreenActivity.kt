@@ -8,35 +8,36 @@ import android.widget.TextView
 
 class RestartScreenActivity : AppCompatActivity() {
 
-    var finalScoreTextView: TextView? = null
-
-    open var scorePoints : Int= 0
-
+    var scoreView: TextView? = null
+    var finalTextView: TextView? = null
     var restartButton: Button? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_restart_screen)
 
+        finalTextView = findViewById(R.id.finalTextView);
+        scoreView = findViewById(R.id.scoreView)
+        restartButton = findViewById(R.id.restartButton)
 
-        finalScoreTextView = findViewById(R.id.finalScoreTextView)
-
-        finalScoreTextView!!.text = scorePoints.toString()
-
-        restartButton = findViewById<Button>(R.id.restartButton)
+        scoreView!!.text = String.format(getString(R.string.score), Score.scorePoints.toString())
 
         restartButton!!.setOnClickListener {
+            Score.answeredCategories = mutableListOf<String>()
+            Score.correctAnswers = 0
+            Score.scorePoints = 0
             startCategoryQuestionActivity()
         }
 
-
+        if (Score.answeredCategories.size == 4) {
+            finalTextView!!.text = getString(R.string.you_won)
+        } else {
+            finalTextView!!.text = getString(R.string.you_lost)
+        }
     }
 
-
     fun startCategoryQuestionActivity() {
-
         val intent = Intent(this, CategoryQuestionActivity::class.java)
         startActivity(intent)
-
     }
 }

@@ -15,43 +15,34 @@ import java.util.concurrent.TimeUnit
 
 open class QuestionsActivity() : AppCompatActivity() {
 
-    open var correctAnswers : Int = 0
-
-    var remainingHearts: Int = 2
-
-    var currentQuestion: Int = 0
-    var questions: Array<Question> = emptyArray<Question>();
-
-    var scorePoints: Int = 0
-
     var answerButton1: Button? = null
     var answerButton2: Button? = null
     var answerButton3: Button? = null
     var answerButton4: Button? = null
-
     var heart1ImageView: ImageView? = null
     var heart2ImageView: ImageView? = null
 
+    var remainingHearts: Int = 2
+    var currentQuestion: Int = 0
+    var questions: Array<Question> = emptyArray<Question>();
     var category: Category? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_questions)
 
-        //this.category = intent.extras.getSerializable("category") as Category
-
         this.category = intent.getSerializableExtra("category") as Category
         this.questions = category!!.questions
 
-
-
         questions.shuffle();
-
 
         answerButton1 = findViewById<Button>(R.id.answerButton1)
         answerButton2 = findViewById<Button>(R.id.answerButton2)
         answerButton3 = findViewById<Button>(R.id.answerButton3)
         answerButton4 = findViewById<Button>(R.id.answerButton4)
+
+        val score = findViewById<TextView>(R.id.scoreView)
+        score.text = String.format(getString(R.string.score), Score.scorePoints.toString())
 
         answerButton1!!.setBackgroundColor(ContextCompat.getColor(this, category!!.color))
         answerButton2!!.setBackgroundColor(ContextCompat.getColor(this, category!!.color))
@@ -70,7 +61,7 @@ open class QuestionsActivity() : AppCompatActivity() {
                 currentQuestion++
                 Handler(getMainLooper()).postDelayed({
                     setQuestion()
-                }, 1000)
+                }, 750)
 
             } else {
                 answerButton1!!.setBackgroundColor(ContextCompat.getColor(this, R.color.grey))
@@ -86,7 +77,7 @@ open class QuestionsActivity() : AppCompatActivity() {
                 currentQuestion++
                 Handler(getMainLooper()).postDelayed({
                     setQuestion()
-                }, 1000)
+                }, 750)
             } else {
                 answerButton2!!.setBackgroundColor(ContextCompat.getColor(this, R.color.grey))
                 remainingHearts -= 1
@@ -102,7 +93,7 @@ open class QuestionsActivity() : AppCompatActivity() {
                 currentQuestion++
                 Handler(getMainLooper()).postDelayed({
                     setQuestion()
-                }, 1000)
+                }, 750)
             } else {
                 answerButton3!!.setBackgroundColor(ContextCompat.getColor(this, R.color.grey))
                 remainingHearts -= 1
@@ -117,7 +108,7 @@ open class QuestionsActivity() : AppCompatActivity() {
                 currentQuestion++
                 Handler(getMainLooper()).postDelayed({
                     setQuestion()
-                }, 1000)
+                }, 750)
             } else {
                 answerButton4!!.setBackgroundColor(ContextCompat.getColor(this, R.color.grey))
                 remainingHearts -= 1
@@ -126,21 +117,23 @@ open class QuestionsActivity() : AppCompatActivity() {
             }
         }
 
-
     }
 
     fun updateScore() {
-        var score = findViewById<TextView>(R.id.finalScoreTextView)
-        scorePoints += 20
-        score.text = scorePoints.toString()
-        correctAnswers += 1
-        if (correctAnswers == 2){
-           val intent = Intent(this, CategoryQuestionActivity::class.java)
-           startActivity(intent)
-        }
+        var score = findViewById<TextView>(R.id.scoreView)
+        Score.scorePoints += 20
+        score.text = String.format(getString(R.string.score), Score.scorePoints.toString())
+        Score.correctAnswers += 1
     }
 
     private fun setQuestion() {
+        if (currentQuestion >= questions.size-1) {
+            Score.answeredCategories.add(category!!.name)
+            val intent = Intent(this, CategoryQuestionActivity::class.java)
+            startActivity(intent)
+            return
+        }
+
         var question = questions[currentQuestion]
 
         var sTextView = findViewById<TextView>(R.id.sTextView)
@@ -158,10 +151,6 @@ open class QuestionsActivity() : AppCompatActivity() {
         answerButton2!!.text = question.answers[1]
         answerButton3!!.text = question.answers[2]
         answerButton4!!.text = question.answers[3]
-
-        if (currentQuestion >= questions.size) {
-            finish();
-        }
 
     }
 
@@ -187,54 +176,4 @@ open class QuestionsActivity() : AppCompatActivity() {
         startActivity(intent)
 
     }
-
-
-
-   /* fun checkWrongAnswer() {
-        answerButton1?.setOnClickListener {
-            if (answerButton1?.text !== questions[currentQuestion].rightAnswer) {
-                answerButton1!!.setBackgroundColor(ContextCompat.getColor(this, R.color.red))
-
-            }
-            answerButton2?.setOnClickListener {
-                if (answerButton2?.text !== questions[currentQuestion].rightAnswer) {
-                    answerButton2!!.setBackgroundColor(ContextCompat.getColor(this, R.color.red))
-
-                }
-
-                answerButton3?.setOnClickListener {
-                    if (answerButton3?.text !== questions[currentQuestion].rightAnswer) {
-                        answerButton3!!.setBackgroundColor(
-                            ContextCompat.getColor(
-                                this,
-                                R.color.red
-                            )
-                        )
-
-                    }
-
-                    answerButton4?.setOnClickListener {
-                        if (answerButton4?.text !== questions[currentQuestion].rightAnswer) {
-                            answerButton4!!.setBackgroundColor(
-                                ContextCompat.getColor(
-                                    this,
-                                    R.color.red
-                                )
-                            )
-
-                        }
-
-                    }
-
-
-
-                }
-
-            }
-        }
-
-
-    }
-
-    */
 }

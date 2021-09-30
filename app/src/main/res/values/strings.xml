@@ -1,4 +1,14 @@
 <resources>
     <string name="app_name">quizApp</string>
-    <string name="score">Score:</string>
+    <string name="score">Poäng: %s</string>
+    <string name="you_won">Du vann!</string>
+    <string name="you_lost">Du förlorade!</string>
+    <string name="start">Starta</string>
+
+    <string name="choose_category">Välj kategori</string>
+    <string name="category_history">Historia</string>
+    <string name="category_sport">Sport</string>
+    <string name="category_technology">Teknologi och naturvetenskap</string>
+    <string name="category_geography">Geografi</string>
+
 </resources>
