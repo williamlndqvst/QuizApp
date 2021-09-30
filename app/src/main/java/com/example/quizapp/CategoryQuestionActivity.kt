@@ -5,9 +5,13 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import androidx.core.content.ContextCompat
 import java.io.Serializable
 
 class CategoryQuestionActivity : AppCompatActivity() {
+
+    var disableCategoryButton = correctAnswers
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,6 +28,10 @@ class CategoryQuestionActivity : AppCompatActivity() {
 
         historyButton.setOnClickListener {
             startHistoryQuestionActivity()
+            if (correctAnswers == 2) {
+                historyButton.isEnabled = false
+                historyButton!!.setBackgroundColor(ContextCompat.getColor(this, R.color.grey))
+            }
         }
         val sportButton = findViewById<Button>(R.id.sportButton)
 
@@ -95,12 +103,15 @@ class CategoryQuestionActivity : AppCompatActivity() {
             val hQ2 = Question("Vilket år slutade det andra världskriget?", hQ2answers, "1945")
 
             var hQ3answers: Array<String> = arrayOf("Vulkanutbrott", "Jordbävning", "Tsunami", "Översvämmning")
-            val hQ3 = Question("Vilken händelse på Island stoppade fkygtrafiken i nästan hela Nordeuropa i april 2010?", hQ3answers, "Vulkanutbrott")
+            val hQ3 = Question("Vilken händelse på Island stoppade flygtrafiken i nästan hela Nordeuropa i april 2010?", hQ3answers, "Vulkanutbrott")
 
             var hQ4answers: Array<String> = arrayOf("Augustus", "Nero", "Tiberius", "Caligula")
             val hQ4 = Question("Vem var den första romerska kejsaren?", hQ4answers, "Augustus")
 
-            var historyQuestions: Array<Question> = arrayOf(hQ1, hQ2, hQ3, hQ4)
+            var hQ5answers: Array<String> = arrayOf("Yuri Gagarin", "Alan Shepard", "Neil Armstrong", "Gherman Titov")
+            val hQ5 = Question("Vem var den första människan i rymden?", hQ5answers, "Yuri Gagarin")
+
+            var historyQuestions: Array<Question> = arrayOf(hQ1, hQ2, hQ3, hQ4, gQ5)
             val historyCategory: Category = Category();
             historyCategory.name = "History"
             historyCategory.questions = historyQuestions;

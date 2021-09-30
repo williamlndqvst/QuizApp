@@ -13,8 +13,9 @@ import androidx.core.content.ContextCompat
 import java.security.AccessController.getContext
 import java.util.concurrent.TimeUnit
 
-class QuestionsActivity() : AppCompatActivity() {
+open class QuestionsActivity() : AppCompatActivity() {
 
+    open var correctAnswers : Int = 0
 
     var remainingHearts: Int = 2
 
@@ -42,13 +43,9 @@ class QuestionsActivity() : AppCompatActivity() {
         this.category = intent.getSerializableExtra("category") as Category
         this.questions = category!!.questions
 
-        Log.e("QuestionsActivity", "" + category!!.name);
 
 
-        //questions = category!!.questions
         questions.shuffle();
-
-        Log.e("QuestionsActivity", "" + this.questions[0].question);
 
 
         answerButton1 = findViewById<Button>(R.id.answerButton1)
@@ -136,6 +133,11 @@ class QuestionsActivity() : AppCompatActivity() {
         var score = findViewById<TextView>(R.id.finalScoreTextView)
         scorePoints += 20
         score.text = scorePoints.toString()
+        correctAnswers += 1
+        if (correctAnswers == 2){
+           val intent = Intent(this, CategoryQuestionActivity::class.java)
+           startActivity(intent)
+        }
     }
 
     private fun setQuestion() {
@@ -161,7 +163,6 @@ class QuestionsActivity() : AppCompatActivity() {
             finish();
         }
 
-
     }
 
     fun checkRemainingHearts() {
@@ -186,6 +187,8 @@ class QuestionsActivity() : AppCompatActivity() {
         startActivity(intent)
 
     }
+
+
 
    /* fun checkWrongAnswer() {
         answerButton1?.setOnClickListener {
