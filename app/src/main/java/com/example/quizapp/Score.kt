@@ -6,5 +6,7 @@ open class Score {
         var scorePoints: Int = 0
         var answeredCategories = mutableListOf<String>()
 
+        var playerName : String = ""
+
     }
 }

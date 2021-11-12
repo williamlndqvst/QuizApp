@@ -3,11 +3,14 @@ package com.example.quizapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 
 class CategoryQuestionActivity : AppCompatActivity() {
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,6 +20,7 @@ class CategoryQuestionActivity : AppCompatActivity() {
         val historyButton = findViewById<Button>(R.id.historyButton)
         val technologyButton = findViewById<Button>(R.id.technologyButton)
         val sportButton = findViewById<Button>(R.id.sportButton)
+
 
         geographyButton.setOnClickListener {
             startGeographyQuestionActivity()
